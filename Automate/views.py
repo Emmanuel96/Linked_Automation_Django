@@ -8,6 +8,7 @@ from django.http import HttpResponse
 import time
 import logging
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 
 logger = logging.getLogger("django")
 
@@ -18,9 +19,10 @@ def apply(request):
         username = request.POST.get("email")
         password = request.POST.get("password")
 
-        logger.info(type(password))
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
 
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://www.linkedin.com")
         time.sleep(5)
         # Automate email and password input
@@ -113,10 +115,10 @@ def apply(request):
 def connect(request):
     if request.method == "POST":
         username = request.POST.get("email")
-        password = request.POST.get("password")
-        search = request.POST.get("search")
+        password = request.POST.get("password1")
 
-        logger.info(type(password))
+        # chrome_options = Options()
+        # chrome_options.add_argument("--headless")
 
         driver = webdriver.Chrome()
         driver.get("https://www.linkedin.com")
@@ -130,7 +132,6 @@ def connect(request):
         submit = driver.find_element(
             By.CLASS_NAME, "sign-in-form__submit-btn--full-width"
         ).click()
-        time.sleep(20)
 
         search = driver.find_element(By.CLASS_NAME, "search-global-typeahead__input")
         # add input
@@ -143,7 +144,7 @@ def connect(request):
         primary_filter_li = primary_filter_ul.find_elements(
             By.CLASS_NAME, "search-reusables__primary-filter"
         )
-        people = primary_filter_li[1].click()
+        people = primary_filter_li[0].click()
         time.sleep(10)
 
         # people_ul = driver.find_element(By.TAG_NAME, "ul")
@@ -172,7 +173,6 @@ def connect(request):
 
         # Return the response to the client
         return HttpResponse(response)
-    return render(request, "apply.html")
     context = {}
     return render(request, "connect.html", context)
 

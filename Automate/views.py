@@ -164,7 +164,7 @@ def connect(request):
         try:
             name_element = driver.find_element(By.CLASS_NAME, "global-nav__me-photo")
             name = name_element.get_attribute("alt")
-            response = f"Login successful. Welcome {name}!\n{p}"
+            response = f"Login succe ssful. Welcome {name}!\n{p}"
         except:
             response = "Login failed. Please check your credentials."
 

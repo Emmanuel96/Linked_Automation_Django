@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://linkedautomationdjango-production.up.railway.app/',
+    'https://linkedautomationdjango-production.up.railway.app',
     # Other allowed origins
 ]
 

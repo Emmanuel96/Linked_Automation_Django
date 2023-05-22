@@ -60,9 +60,9 @@ CORS_ALLOWED_ORIGINS = [
 
 # Optional: Specify other CORS settings as needed
 # For example:
-CORS_ALLOW_METHODS = ['GET', 'POST']
-CORS_ALLOW_HEADERS = ['Content-Type']
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_METHODS = ['GET', 'POST']
+# CORS_ALLOW_HEADERS = ['Content-Type']
+# CORS_ALLOW_CREDENTIALS = True
 
 LOGGING = {
     "version": 1,

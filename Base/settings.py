@@ -39,17 +39,31 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "Automate",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://linkedautomationdjango-production.up.railway.app',
+    # Other allowed origins
+]
+
+# Optional: Specify other CORS settings as needed
+# For example:
+CORS_ALLOW_METHODS = ['GET', 'POST']
+CORS_ALLOW_HEADERS = ['Content-Type']
+CORS_ALLOW_CREDENTIALS = True
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
